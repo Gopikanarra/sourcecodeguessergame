@@ -1,0 +1,91 @@
+import java.util.Scanner;
+class Guesser{
+	int r;
+	public Guesser(int i) {
+		r=i;
+	}
+	int guess;
+	public int guessnumber()
+	{
+		boolean b=false;
+		Scanner scan=new Scanner(System.in);
+		System.out.println("guesser please choose the number in b/w the range of "+r+":-");
+		guess =scan.nextInt();
+		while(guess<0 || guess>r) {
+			System.out.println("GUESSER you have choosen out of range--please guess within the range "+r+" :-");
+			guess =scan.nextInt();
+			b=false;
+		}
+		return guess;
+	}
+}
+class GamePlayers{
+	int player;
+	int i;
+	public GamePlayers(int i){
+		this.i=i;
+	}
+	public int  playerturn(){
+		boolean b=false;
+		Scanner scan=new Scanner(System.in);
+		System.out.println("player pls guess the number in b/w the range of "+i+":-");
+		player =scan.nextInt();
+		while(player<0 || player>i) {
+			System.out.println("PLAYER you have choosen out of range--please guess within the range"+i+" :-");
+			player =scan.nextInt();
+			b=false;
+		}
+		return player;
+	}	
+}
+class Umpire{
+	int guess;
+	int player1;
+	int player2;
+	int player3;
+	int i;
+	public Umpire(int i){
+		this.i=i;
+	}
+	public void collectfromguesser() {
+	Guesser guesnum = new Guesser(i);
+	 guess=guesnum.guessnumber();
+	}
+    public void collectfromplayer() {
+	GamePlayers p1=new GamePlayers(i);
+	GamePlayers p2=new GamePlayers(i);
+	GamePlayers p3=new GamePlayers(i);
+	 player1=p1.playerturn();
+	 player2=p2.playerturn();
+	 player3=p3.playerturn();
+	if (guess==player1) {
+		if(player1==player2 && player1==player3) 
+			System.out.println("game TIE ----all the players had won the game!!");
+		
+	    else if(player1==player2)
+	    	System.out.println(" HURRAH !!! player 1 and player 2 had won the game!!");    
+	}
+	else if(guess==player2){
+		if(player2==player3)
+			System.out.println("HURRAH !! player 2 and player 3 had won the game!!");
+	}
+	else if(guess==player3) {
+		System.out.println("CONGRATS!! player3, you  won the game!!");
+	}
+	else{
+		System.out.println("HURRAH all the players had lost the game!!(BETTER LUCK NEXT TIME)");
+	}	
+	}
+}
+public class guessTheNumber {
+	public static void main(String[] args){
+		Scanner scan=new Scanner(System.in);
+		int n;
+		System.out.println("enter the range:-");
+		 n=scan.nextInt();
+		Umpire u=new Umpire(n);
+		u.collectfromguesser();
+		u.collectfromplayer();
+		}
+}
+
