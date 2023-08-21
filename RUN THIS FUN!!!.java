@@ -1,8 +1,8 @@
 import java.util.Scanner;
 class Guesser{
 	int r;
-	public Guesser(int i) {
-		r=i;
+	public Guesser(int guesser) {
+		r=guesser;
 	}
 	int guess;
 	public int guessnumber()
@@ -12,7 +12,7 @@ class Guesser{
 		System.out.println("guesser please choose the number in b/w the range of "+r+":-");
 		guess =scan.nextInt();
 		while(guess<0 || guess>r) {
-			System.out.println("GUESSER you have choosen out of range--please guess within the range "+r+" :-");
+			System.out.println("GUESSER you have choosen out of range--\nplease guess within the range "+r+" :-");
 			guess =scan.nextInt();
 			b=false;
 		}
